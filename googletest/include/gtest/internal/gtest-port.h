@@ -280,6 +280,9 @@
 #include <ciso646>  // Pre-C++20
 #endif
 
+#if defined(GTEST_BUILD_WITH_IMPORT_STD)
+import std;
+#else
 #include <ctype.h>   // for isspace, etc
 #include <stddef.h>  // for ptrdiff_t
 #include <stdio.h>
@@ -304,6 +307,8 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #endif  // !_WIN32_WCE
+#endif
+
 
 #if defined __APPLE__
 #include <AvailabilityMacros.h>

@@ -48,11 +48,14 @@
 #include <mem.h>
 #endif
 
-#include <string.h>
-
+#if defined(GTEST_BUILD_WITH_IMPORT_STD)
+import std;
+#else
 #include <cstdint>
+#include <cstring>
 #include <sstream>
 #include <string>
+#endif
 
 #include "gtest/internal/gtest-port.h"
 

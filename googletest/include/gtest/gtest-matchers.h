@@ -39,12 +39,16 @@
 #ifndef GOOGLETEST_INCLUDE_GTEST_GTEST_MATCHERS_H_
 #define GOOGLETEST_INCLUDE_GTEST_GTEST_MATCHERS_H_
 
+#if defined(GTEST_BUILD_WITH_IMPORT_STD)
+import std;
+#else
 #include <atomic>
 #include <functional>
 #include <memory>
 #include <ostream>
 #include <string>
 #include <type_traits>
+#endif
 
 #include "gtest/gtest-printers.h"
 #include "gtest/internal/gtest-internal.h"

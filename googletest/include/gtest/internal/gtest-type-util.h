@@ -37,9 +37,13 @@
 #ifndef GOOGLETEST_INCLUDE_GTEST_INTERNAL_GTEST_TYPE_UTIL_H_
 #define GOOGLETEST_INCLUDE_GTEST_INTERNAL_GTEST_TYPE_UTIL_H_
 
+#if defined(GTEST_BUILD_WITH_IMPORT_STD)
+import std;
+#else
 #include <string>
 #include <type_traits>
 #include <typeinfo>
+#endif
 
 #include "gtest/internal/gtest-port.h"
 

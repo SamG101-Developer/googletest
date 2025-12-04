@@ -174,9 +174,13 @@ TEST_P(DerivedTest, DoesBlah) {
 
 #endif  // 0
 
+#if defined(GTEST_BUILD_WITH_IMPORT_STD)
+import std;
+#else
 #include <functional>
 #include <iterator>
 #include <utility>
+#endif
 
 #include "gtest/internal/gtest-internal.h"
 #include "gtest/internal/gtest-param-util.h"  // IWYU pragma: export

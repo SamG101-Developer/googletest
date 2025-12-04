@@ -34,10 +34,14 @@
 #ifndef GOOGLETEST_INCLUDE_GTEST_GTEST_TEST_PART_H_
 #define GOOGLETEST_INCLUDE_GTEST_GTEST_TEST_PART_H_
 
+#if defined(GTEST_BUILD_WITH_IMPORT_STD)
+import std;
+#else
 #include <iosfwd>
 #include <ostream>
 #include <string>
 #include <vector>
+#endif
 
 #include "gtest/internal/gtest-internal.h"
 #include "gtest/internal/gtest-string.h"

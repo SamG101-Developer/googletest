@@ -34,7 +34,11 @@
 #ifndef GOOGLETEST_SAMPLES_PRIME_TABLES_H_
 #define GOOGLETEST_SAMPLES_PRIME_TABLES_H_
 
+#if defined(GTEST_BUILD_WITH_IMPORT_STD)
+import std;
+#else
 #include <algorithm>
+#endif
 
 // The prime table interface.
 class PrimeTable {

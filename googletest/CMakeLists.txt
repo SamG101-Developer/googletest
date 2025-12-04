@@ -8,6 +8,12 @@
 # ctest. You can select which tests to run using 'ctest -R regex'.
 # For more options, run 'ctest --help'.
 
+# New option for building with module compatibility (import std)
+option(
+  GTEST_BUILD_WITH_IMPORT_STD
+  "Build gtest with module compatibility (import std)."
+  ON)
+
 # When other libraries are using a shared version of runtime libraries,
 # Google Test also has to use one.
 option(

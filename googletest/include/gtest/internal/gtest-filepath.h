@@ -42,8 +42,12 @@
 #ifndef GOOGLETEST_INCLUDE_GTEST_INTERNAL_GTEST_FILEPATH_H_
 #define GOOGLETEST_INCLUDE_GTEST_INTERNAL_GTEST_FILEPATH_H_
 
+#if defined(GTEST_BUILD_WITH_IMPORT_STD)
+import std;
+#else
 #include <string>
 #include <utility>
+#endif
 
 #include "gtest/internal/gtest-port.h"
 #include "gtest/internal/gtest-string.h"

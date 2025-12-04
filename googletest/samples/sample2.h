@@ -32,7 +32,11 @@
 #ifndef GOOGLETEST_SAMPLES_SAMPLE2_H_
 #define GOOGLETEST_SAMPLES_SAMPLE2_H_
 
+#if defined(GTEST_BUILD_WITH_IMPORT_STD)
+import std;
+#else
 #include <string.h>
+#endif
 
 // A simple string class.
 class MyString {

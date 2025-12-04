@@ -49,6 +49,8 @@
 #ifndef GOOGLETEST_INCLUDE_GTEST_GTEST_H_
 #define GOOGLETEST_INCLUDE_GTEST_GTEST_H_
 
+#if defined(GTEST_BUILD_WITH_IMPORT_STD)
+import std;
 #include <cstddef>
 #include <cstdint>
 #include <limits>
@@ -59,6 +61,7 @@
 #include <string>
 #include <type_traits>
 #include <vector>
+#endif
 
 #include "gtest/gtest-assertion-result.h"  // IWYU pragma: export
 #include "gtest/gtest-death-test.h"  // IWYU pragma: export

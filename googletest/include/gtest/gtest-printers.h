@@ -104,6 +104,9 @@
 #ifndef GOOGLETEST_INCLUDE_GTEST_GTEST_PRINTERS_H_
 #define GOOGLETEST_INCLUDE_GTEST_GTEST_PRINTERS_H_
 
+#if defined(GTEST_BUILD_WITH_IMPORT_STD)
+import std;
+#else
 #include <any>
 #include <functional>
 #include <memory>
@@ -118,6 +121,7 @@
 #include <utility>
 #include <variant>
 #include <vector>
+#endif
 
 #ifdef GTEST_HAS_ABSL
 #include "absl/strings/has_absl_stringify.h"

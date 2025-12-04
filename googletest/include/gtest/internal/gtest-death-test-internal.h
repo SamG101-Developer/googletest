@@ -39,10 +39,13 @@
 #ifndef GOOGLETEST_INCLUDE_GTEST_INTERNAL_GTEST_DEATH_TEST_INTERNAL_H_
 #define GOOGLETEST_INCLUDE_GTEST_INTERNAL_GTEST_DEATH_TEST_INTERNAL_H_
 
-#include <stdio.h>
-
+#if defined(GTEST_BUILD_WITH_IMPORT_STD)
+import std;
+#else
+#include <cstdio>
 #include <memory>
 #include <string>
+#endif
 
 #include "gtest/gtest-matchers.h"
 #include "gtest/internal/gtest-internal.h"

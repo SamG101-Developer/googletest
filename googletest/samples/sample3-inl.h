@@ -32,7 +32,11 @@
 #ifndef GOOGLETEST_SAMPLES_SAMPLE3_INL_H_
 #define GOOGLETEST_SAMPLES_SAMPLE3_INL_H_
 
+#if defined(GTEST_BUILD_WITH_IMPORT_STD)
+import std;
+#else
 #include <stddef.h>
+#endif
 
 // Queue is a simple queue implemented as a singled-linked list.
 //

@@ -34,6 +34,9 @@
 #ifndef GOOGLETEST_SRC_GTEST_INTERNAL_INL_H_
 #define GOOGLETEST_SRC_GTEST_INTERNAL_INL_H_
 
+#if defined(GTEST_BUILD_WITH_IMPORT_STD)
+import std;
+#else
 #ifndef _WIN32_WCE
 #include <errno.h>
 #endif  // !_WIN32_WCE
@@ -48,6 +51,7 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
+#endif
 
 #include "gtest/internal/gtest-port.h"
 
