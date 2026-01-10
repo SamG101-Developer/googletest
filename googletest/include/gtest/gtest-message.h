@@ -50,6 +50,7 @@
 
 #if defined(GTEST_BUILD_WITH_IMPORT_STD)
 import std;
+import std.compat;
 #else
 #include <limits>
 #include <memory>

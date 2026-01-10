@@ -273,6 +273,13 @@
 // GCC15 warns that <ciso646> is deprecated in C++17 and suggests using
 // <version> instead, even though <version> is not available in C++17 mode prior
 // to GCC9.
+#if defined(GTEST_BUILD_WITH_IMPORT_STD)
+import std;
+import std.compat;
+import gtest_wrapper.pthread;
+import gtest_wrapper.regex;
+import gtest_wrapper.stdio;
+#else
 #if GTEST_INTERNAL_CPLUSPLUS_LANG >= 202002L || \
     GTEST_INTERNAL_HAS_INCLUDE(<version>)
 #include <version>  // C++20 or <version> support.
@@ -280,9 +287,6 @@
 #include <ciso646>  // Pre-C++20
 #endif
 
-#if defined(GTEST_BUILD_WITH_IMPORT_STD)
-import std;
-#else
 #include <ctype.h>   // for isspace, etc
 #include <stddef.h>  // for ptrdiff_t
 #include <stdio.h>
@@ -409,8 +413,10 @@ typedef struct _RTL_CRITICAL_SECTION GTEST_CRITICAL_SECTION;
 // This assumes that non-Windows OSes provide unistd.h. For OSes where this
 // is not the case, we need to include headers that provide the functions
 // mentioned above.
+#if !defined(GTEST_BUILD_WITH_IMPORT_STD)
 #include <strings.h>
 #include <unistd.h>
+#endif
 #endif  // GTEST_OS_WINDOWS
 
 #ifdef GTEST_OS_LINUX_ANDROID
@@ -441,7 +447,9 @@ typedef struct _RTL_CRITICAL_SECTION GTEST_CRITICAL_SECTION;
 #include "re2/re2.h"
 #define GTEST_USES_RE2 1
 #elif GTEST_HAS_POSIX_RE
+#if !defined(GTEST_BUILD_WITH_IMPORT_STD)
 #include <regex.h>  // NOLINT
+#endif
 #define GTEST_USES_POSIX_RE 1
 #else
 // Use our own simple regex implementation.
@@ -581,7 +589,9 @@ typedef struct _RTL_CRITICAL_SECTION GTEST_CRITICAL_SECTION;
 // It's this header's responsibility to #include <typeinfo> when RTTI
 // is enabled.
 #if GTEST_HAS_RTTI
+#if !defined(GTEST_BUILD_WITH_IMPORT_STD)
 #include <typeinfo>
+#endif
 #endif
 
 // Determines whether Google Test can use the pthreads library.
@@ -608,10 +618,12 @@ typedef struct _RTL_CRITICAL_SECTION GTEST_CRITICAL_SECTION;
 #if GTEST_HAS_PTHREAD
 // gtest-port.h guarantees to #include <pthread.h> when GTEST_HAS_PTHREAD is
 // true.
+#if !defined(GTEST_BUILD_WITH_IMPORT_STD)
 #include <pthread.h>  // NOLINT
 
 // For timespec and nanosleep, used below.
 #include <time.h>  // NOLINT
+#endif
 #endif
 
 // Determines whether clone(2) is supported.
@@ -826,9 +838,11 @@ typedef struct _RTL_CRITICAL_SECTION GTEST_CRITICAL_SECTION;
 #endif  // GTEST_IS_THREADSAFE
 
 #ifdef GTEST_IS_THREADSAFE
+#if !defined(GTEST_BUILD_WITH_IMPORT_STD)
 // Some platforms don't support including these threading related headers.
 #include <condition_variable>  // NOLINT
 #include <mutex>               // NOLINT
+#endif
 #endif                         // GTEST_IS_THREADSAFE
 
 // GTEST_API_ qualifies all symbols that must be exported. The definitions below

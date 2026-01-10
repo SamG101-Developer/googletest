@@ -51,6 +51,7 @@
 
 #if defined(GTEST_BUILD_WITH_IMPORT_STD)
 import std;
+#else
 #include <cstddef>
 #include <cstdint>
 #include <limits>

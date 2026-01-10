@@ -56,6 +56,9 @@ import std;
 #include <stdexcept>
 #endif
 
+#if defined(GTEST_BUILD_WITH_IMPORT_STD)
+import std;
+#else
 #include <cctype>
 #include <cfloat>
 #include <cstdint>
@@ -68,6 +71,7 @@ import std;
 #include <type_traits>
 #include <utility>
 #include <vector>
+#endif
 
 #include "gtest/gtest-message.h"
 #include "gtest/internal/gtest-filepath.h"
