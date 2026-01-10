@@ -121,14 +121,11 @@ import std;
 #include <utility>
 #include <variant>
 #include <vector>
-#endif
 
 #ifdef GTEST_HAS_ABSL
 #include "absl/strings/has_absl_stringify.h"
 #include "absl/strings/str_cat.h"
 #endif  // GTEST_HAS_ABSL
-#include "gtest/internal/gtest-internal.h"
-#include "gtest/internal/gtest-port.h"
 
 #if GTEST_INTERNAL_HAS_STD_SPAN
 #include <span>  // NOLINT
@@ -137,6 +134,10 @@ import std;
 #if GTEST_INTERNAL_HAS_COMPARE_LIB
 #include <compare>  // NOLINT
 #endif              // GTEST_INTERNAL_HAS_COMPARE_LIB
+#endif
+
+#include "gtest/internal/gtest-internal.h"
+#include "gtest/internal/gtest-port.h"
 
 namespace testing {
 
