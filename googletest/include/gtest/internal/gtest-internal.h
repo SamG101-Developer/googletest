@@ -56,9 +56,6 @@ import std;
 #include <stdexcept>
 #endif
 
-#if defined(GTEST_BUILD_WITH_IMPORT_STD)
-import std;
-#else
 #include <cctype>
 #include <cfloat>
 #include <cstdint>
@@ -72,12 +69,12 @@ import std;
 #include <utility>
 #include <vector>
 #endif
+#endif
 
 #include "gtest/gtest-message.h"
 #include "gtest/internal/gtest-filepath.h"
 #include "gtest/internal/gtest-string.h"
 #include "gtest/internal/gtest-type-util.h"
-#endif
 
 // Due to C++ preprocessor weirdness, we need double indirection to
 // concatenate two tokens when one of them is __LINE__.  Writing
