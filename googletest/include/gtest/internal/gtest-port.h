@@ -276,9 +276,6 @@
 #if defined(GTEST_BUILD_WITH_IMPORT_STD)
 import std;
 import std.compat;
-import gtest_wrapper.pthread;
-import gtest_wrapper.regex;
-import gtest_wrapper.stdio;
 #else
 #if GTEST_INTERNAL_CPLUSPLUS_LANG >= 202002L || \
     GTEST_INTERNAL_HAS_INCLUDE(<version>)
@@ -433,7 +430,7 @@ typedef struct _RTL_CRITICAL_SECTION GTEST_CRITICAL_SECTION;
 #else
 #if !(defined(GTEST_OS_WINDOWS) || defined(GTEST_OS_XTENSA) || \
       defined(GTEST_OS_QURT))
-#define GTEST_HAS_POSIX_RE 1
+#define GTEST_HAS_POSIX_RE 0
 #else
 #define GTEST_HAS_POSIX_RE 0
 #endif
@@ -2384,7 +2381,9 @@ using StringView = ::absl::string_view;
 // Otherwise for C++17 and higher use std::string_view for Matcher<>
 // specializations.
 #define GTEST_INTERNAL_HAS_STRING_VIEW 1
+#if !defined(GTEST_BUILD_WITH_IMPORT_STD)
 #include <string_view>
+#endif
 namespace testing {
 namespace internal {
 using StringView = ::std::string_view;
