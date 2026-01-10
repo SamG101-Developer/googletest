@@ -14,6 +14,18 @@ option(
   "Build gtest with module compatibility (import std)."
   ON)
 
+if (GTEST_BUILD_WITH_IMPORT_STD)
+  set(CMAKE_CXX_STANDARD 20)
+  set(CMAKE_CXX_STANDARD_REQUIRED ON)
+  set(CMAKE_CXX_EXTENSIONS OFF)
+endif()
+
+# Wrapper module files that are required.
+set(WRAPPER_MODULE_FILES
+  include/wrappers/pthread.ixx
+  include/wrappers/regex.ixx
+  include/wrappers/stdio.ixx)
+
 # When other libraries are using a shared version of runtime libraries,
 # Google Test also has to use one.
 option(
@@ -127,6 +139,17 @@ include_directories(${gtest_build_include_dirs})
 # are used for other targets, to ensure that gtest can be compiled by a user
 # aggressive about warnings.
 cxx_library(gtest "${cxx_strict}" src/gtest-all.cc)
+if (GTEST_BUILD_WITH_IMPORT_STD)
+  target_sources(gtest
+    PUBLIC
+    FILE_SET cxx_modules TYPE CXX_MODULES
+    BASE_DIRS
+    ${gtest_SOURCE_DIR}/include
+    FILES
+    ${WRAPPER_MODULE_FILES}
+  )
+endif()
+
 set_target_properties(gtest PROPERTIES VERSION ${GOOGLETEST_VERSION})
 if(GTEST_HAS_ABSL)
   target_compile_definitions(gtest PUBLIC GTEST_HAS_ABSL=1)

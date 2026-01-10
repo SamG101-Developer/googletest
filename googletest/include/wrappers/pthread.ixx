@@ -1,7 +1,7 @@
 module;
 #include <pthread.h>
 
-export module wrapper.pthread;
+export module gtest_wrapper.pthread;
 
 export {
   using ::pthread_cond_t;

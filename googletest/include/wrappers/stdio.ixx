@@ -10,7 +10,7 @@ module;
 #define LEGACY_errno (*__errno_location ())
 #undef errno
 
-export module wrapper.stdio;
+export module gtest_wrapper.stdio;
 
 export {
   using ::fileno;
