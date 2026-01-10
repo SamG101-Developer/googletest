@@ -69,7 +69,6 @@ import std;
 #include <utility>
 #include <vector>
 #endif
-#endif
 
 #include "gtest/gtest-message.h"
 #include "gtest/internal/gtest-filepath.h"
