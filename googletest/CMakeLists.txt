@@ -139,17 +139,6 @@ include_directories(${gtest_build_include_dirs})
 # are used for other targets, to ensure that gtest can be compiled by a user
 # aggressive about warnings.
 cxx_library(gtest "${cxx_strict}" src/gtest-all.cc)
-if (GTEST_BUILD_WITH_IMPORT_STD)
-  target_sources(gtest
-    PUBLIC
-    FILE_SET cxx_modules TYPE CXX_MODULES
-    BASE_DIRS
-    ${gtest_SOURCE_DIR}/include
-    FILES
-    ${WRAPPER_MODULE_FILES}
-  )
-endif()
-
 set_target_properties(gtest PROPERTIES VERSION ${GOOGLETEST_VERSION})
 if(GTEST_HAS_ABSL)
   target_compile_definitions(gtest PUBLIC GTEST_HAS_ABSL=1)
